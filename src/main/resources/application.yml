@@ -1,0 +1,10 @@
+spring:
+  profiles:
+    active: prod
+#   mvc:
+#     view:
+#       prefix: /templates/
+#       suffix: .html
+#     static-path-pattern: /**
+# server:
+#   port: 80

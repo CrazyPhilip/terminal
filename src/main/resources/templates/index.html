@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Terminal</title>
+
+    <link rel="stylesheet" href="/css/index.css">
+    <script src="https://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+</head>
+<body>
+<div class="terminal">
+    <p>Crazy World v1.0.0</p>
+    <p>Type "help" or "icp" for more information.</p>
+
+    <div class="input-box">
+        <span class="input-span"></span>
+        <input type="text" class="input">
+    </div>
+</div>
+
+<!--<script type="text/javascript">
+    $(function(){
+
+        var terminal = $('.terminal');
+        var input = $('.input');
+        var input_box = $('.input-box');
+
+        var width = terminal.width();
+        //console.log(width);
+
+        var commands = [
+            {
+                "name": "clear",
+                "function": clearConsole
+            },
+            {
+                "name": "help",
+                "function": help
+            }
+        ];
+
+        terminal.on('click',()=>{
+            input.focus();
+        })
+
+        input.on('keypress',function(e){
+            if(e.keyCode === 13)
+            {
+                print(input.val());
+            }
+        })
+
+        input.bind('input propertychange', function() {
+            var $this = $(this);
+            //console.log($this);
+            var text_length = $this.val().length;//获取当前文本框的长度
+            var current_width = parseInt(text_length) *16;//该16是改变前的宽度除以当前字符串的长度,算出每个字符的长度
+            //console.log(current_width)
+            $this.css("width",current_width+"px");
+        });
+
+        setInterval(()=>{
+            if(input.is(":focus"))
+            {
+                ;
+            }
+            else
+            {
+                input.focus();
+            }
+        },1000)
+
+        //function
+        function help() {
+
+        }
+
+        function clearConsole() {
+            terminal.children('pre').remove();
+        }
+
+        function print(cmd)
+        {
+            var msg;
+
+            if(searchCmd(cmd)){
+                msg = "2019-02-04";
+            }
+            else
+            {
+                msg = cmd;
+            }
+
+            input_box.before('<pre class="output">' + msg + '</pre>');
+            input.val("");
+            input.css('width','1px');
+
+            //内容保持在底部
+            terminal.scrollTop(terminal[0].scrollHeight);
+        }
+
+        function searchCmd(cmd){
+            for(var i=0;i<commands.length;i++)
+            {
+                if(cmd == commands[i].name)
+                {
+                    commands[i].function();
+                    return true;
+                }
+            }
+            return false;
+        }
+
+    })
+
+</script>-->
+
+</body>
+</html>

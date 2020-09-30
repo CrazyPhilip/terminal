@@ -1,0 +1,101 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+}
+html .terminal::-webkit-scrollbar,
+body .terminal::-webkit-scrollbar {
+    display: none;
+}
+html .terminal,
+body .terminal,
+html .input,
+body .input {
+    font-weight: 260;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+    overflow-y: scroll;
+    font-family: Consolas;
+}
+html .terminal,
+body .terminal {
+    width: max-content;
+    height: max-content;
+    position: absolute;
+    left: 50px;
+    top: 50px;
+    right: 50px;
+    bottom: 50px;
+    padding: 10px;
+    background-color: #000000;
+    color: #0add0a;
+    overflow: hidden;
+    overflow-y: auto;
+    font-family: Consolas;
+}
+html .terminal p,
+body .terminal p {
+    font-weight: 260;
+    font-size: 1.2em;
+    padding: 0;
+    margin: 0;
+    font-family: Consolas;
+}
+html .terminal .output,
+body .terminal .output {
+    font-weight: 260;
+    font-size: 1.2em;
+    padding: 0;
+    margin: 0;
+    font-family: Consolas;
+}
+html .terminal .output::before,
+body .terminal .output::before {
+    content: ">>> ";
+    font-weight: 260;
+    font-size: 1.2em;
+    padding: 0;
+    margin: 0;
+    font-family: Consolas;
+}
+html .terminal .output2,
+body .terminal .output2 {
+    font-weight: 260;
+    font-size: 1.2em;
+    padding: 0;
+    margin: 0;
+    font-family: Consolas;
+}
+html .terminal .output2::before,
+body .terminal .output2::before {
+    font-weight: 260;
+    font-size: 1.2em;
+    padding: 0;
+    margin: 0;
+    font-family: Consolas;
+}
+html .terminal .input-span,
+body .terminal .input-span,
+html .terminal .input-span::before,
+body .terminal .input-span::before {
+    content: ">>> ";
+    font-weight: 260;
+    font-size: 1.2em;
+    padding: 0;
+    margin: 0;
+    font-family: Consolas;
+}
+html .terminal .input,
+body .terminal .input {
+    font-size: 1.2em;
+    min-width: 100px;
+    width: fit-content;
+    height: inherit;
+    border: none;
+    outline: none;
+    color: #0add0a;
+    background-color: #000000;
+    font-family: Consolas;
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "name": "help",
+    "output": "Thank you for visiting my personal website!\n\nHere is a list of the keywords. Enter any keyword to get more information about me.\n\nname\ngender\nage\nemail\ntel\nqq\nvx",
+  },
+  {
+    "name": "icp",
+    "output": "蜀ICP备20020513号"
+  },
+  {
+    "name": "name",
+    "output": "程飞\tCheng Fei"
+  },
+  {
+    "name": "gender",
+    "output": "male"
+  },
+  {
+    "name": "age",
+    "output": "24"
+  },
+  {
+    "name": "email",
+    "output": "cf20090901@outlook.com"
+  },
+  {
+    "name": "tel",
+    "output": "18428333654"
+  },
+  {
+    "name": "qq",
+    "output": "623810411"
+  },
+  {
+    "name": "vx",
+    "output": "PhilipGeeK"
+  }
+]
