@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.crazyphilip.terminal.mapper.LogMapper">
+	<resultMap id="BaseResultMap" type="com.crazyphilip.terminal.entity.WebLog">
+		<id column="id" property="id" jdbcType="INTEGER"/>
+		<result column="description" property="description" jdbcType="VARCHAR"/>
+		<result column="username" property="username" jdbcType="VARCHAR"/>
+		<result column="startTime" property="startTime" jdbcType="BIGINT"/>
+		<result column="spendTime" property="spendTime" jdbcType="INTEGER"/>
+		<result column="basePath" property="basePath" jdbcType="VARCHAR"/>
+		<result column="uri" property="uri" jdbcType="VARCHAR"/>
+		<result column="url" property="url" jdbcType="VARCHAR"/>
+		<result column="method" property="method" jdbcType="VARCHAR"/>
+		<result column="ip" property="ip" jdbcType="VARCHAR"/>
+		<result column="parameter" property="parameter" jdbcType="VARCHAR"/>
+		<result column="result" property="result" jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<sql id="tb">log</sql>
+	
+	<sql id="base_column_list">
+	
+	</sql>
+	
+	<insert id="insertLog" parameterType="WebLog" useGeneratedKeys="true" keyProperty="id">
+		insert into
+		<include refid="tb"/>
+		(id, description, username, startTime, spendTime, basePath, uri, url, method, ip, parameter, result)
+		values (#{id}, #{description}, #{username}, #{startTime}, #{spendTime}, #{basePath}, #{uri}, #{url}, #{method}, #{ip}, #{parameter}, #{result})
+	</insert>
+	
+	<select id="countLog" resultType="java.lang.Integer">
+		select count(*) from
+		<include refid="tb"/>
+	</select>
+
+</mapper>
