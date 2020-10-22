@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.crazyphilip.terminal.mapper.TagMapper">
+	<resultMap id="BaseResultMap" type="com.crazyphilip.terminal.entity.Tag">
+		<id column="id" property="id" jdbcType="INTEGER"/>
+		<result column="tag" property="tag" jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<sql id="tb">tag</sql>
+	
+	<sql id="base_column_list">
+	id,tag
+	</sql>
+	
+	<select id="selectAllTags" resultType="java.lang.String">
+		SELECT tag from <include refid="tb"/> order by Id ASC
+	</select>
+	
+	<select id="checkTag" parameterType="java.lang.String" resultType="java.lang.Integer">
+		SELECT count(*) from <include refid="tb"/> where tag = #{tag}
+	</select>
+	
+	<select id="selectSimilarTags" parameterType="java.lang.String" resultType="java.lang.String">
+		SELECT tag from <include refid="tb"/> where tag like '%${tag}%'
+	</select>
+	
+	<insert id="insertTag" parameterType="Tag" useGeneratedKeys="true" keyProperty="id">
+		insert ignore into <include refid="tb"/>(<include refid="base_column_list"/>)
+		values (#{id}, #{tag})
+	</insert>
+
+</mapper>

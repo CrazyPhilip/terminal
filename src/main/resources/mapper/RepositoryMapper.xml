@@ -17,6 +17,14 @@
 	id,title,description,createtime,url,lang,tags
 	</sql>
 	
+	<select id="selectAllRepositories" resultMap="BaseResultMap">
+		SELECT
+		<include refid="base_column_list"/>
+		from
+		<include refid="tb"/>
+		order by Id ASC
+	</select>
+	
 	<select id="selectRepositories" parameterType="java.lang.String" resultMap="BaseResultMap">
 		SELECT
 		<include refid="base_column_list"/>
@@ -25,5 +33,20 @@
 		where lang = #{lang}
 		order by Id ASC
 	</select>
+	
+	<select id="selectRepoById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		SELECT
+		<include refid="base_column_list"/>
+		from
+		<include refid="tb"/>
+		where id = #{id}
+	</select>
+	
+	<insert id="insertRepository" parameterType="Repository" useGeneratedKeys="true" keyProperty="id">
+		insert into
+		<include refid="tb"/>
+		(<include refid="base_column_list"/>)
+		values (#{id}, #{title}, #{description}, #{createtime}, #{url}, #{lang}, #{tags})
+	</insert>
 
 </mapper>

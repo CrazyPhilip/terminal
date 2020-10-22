@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.crazyphilip.terminal.mapper.UserMapper">
+	<resultMap id="BaseResultMap" type="com.crazyphilip.terminal.entity.User">
+		<id column="id" property="id" jdbcType="INTEGER"/>
+		<result column="uid" property="uid" jdbcType="VARCHAR"/>
+		<result column="name" property="name" jdbcType="VARCHAR"/>
+		<result column="password" property="password" jdbcType="VARCHAR"/>
+		<result column="access" property="access" jdbcType="INTEGER"/>
+	</resultMap>
+	
+	<sql id="tb">user</sql>
+	
+	<sql id="base_column_list">
+	id,uid,name,password,access
+	</sql>
+	
+	<select id="selectUsers" parameterType="java.lang.String" resultMap="BaseResultMap">
+		SELECT
+		<include refid="base_column_list"/>
+		from
+		<include refid="tb"/>
+		where #{uid} = uid
+		order by Id ASC
+	</select>
+	
+	<select id="checkUser" parameterType="User" resultType="java.lang.Integer">
+		SELECT
+		count(*)
+		from
+		<include refid="tb"/>
+		where #{uid} = uid and #{password} = password
+		order by Id ASC
+	</select>
+
+</mapper>

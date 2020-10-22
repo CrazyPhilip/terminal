@@ -8,5 +8,11 @@ import java.util.List;
 @Mapper
 public interface RepositoryMapper {
 
+    List<Repository> selectAllRepositories();
+
     List<Repository> selectRepositories(String lang);
+
+    List<Repository> selectRepoById(int id);
+
+    int insertRepository(Repository repository);
 }

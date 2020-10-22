@@ -2,13 +2,11 @@ package com.crazyphilip.terminal.controller;
 
 import com.crazyphilip.terminal.Service.RepositoryService;
 import com.crazyphilip.terminal.entity.Repository;
+import com.crazyphilip.terminal.util.ReturnCode;
+import com.crazyphilip.terminal.util.ReturnVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,11 +18,40 @@ public class RepositoryController {
     private RepositoryService repositoryService;
 
     @RequestMapping("/Repositories/{lang}")
-    public ResponseEntity<?> getRepositories(@PathVariable String lang) {
+    public ReturnVO getRepositories(@PathVariable String lang) {
         System.out.println(lang);
 
-        List<Repository> list = repositoryService.selectRepositories(lang);
+        List<Repository> list = "All".equals(lang) ? repositoryService.selectAllRepositories() : repositoryService.selectRepositories(lang);
 
-        return ResponseEntity.ok(list);
+        if (list.size() > 0){
+            return new ReturnVO(ReturnCode.SUCCESS, Integer.toString(list.size()), list);
+        }
+        else {
+            return new ReturnVO(ReturnCode.FAIL);
+        }
+    }
+
+    @RequestMapping("/Repository/{id}")
+    public ReturnVO getRepoById(@PathVariable Integer id){
+        List<Repository> list = repositoryService.selectRepoById(id);
+
+        if (list.size() > 0){
+            return new ReturnVO(ReturnCode.SUCCESS, String.valueOf(list.size()), list);
+        }
+        else {
+            return new ReturnVO(ReturnCode.FAIL);
+        }
+    }
+
+    @PostMapping(path = "/AddRepository")
+    public ReturnVO insertRepository(@RequestBody Repository repository){
+        int count = repositoryService.insertRepository(repository);
+
+        if(count > 0){
+            return new ReturnVO();
+        }
+        else {
+            return new ReturnVO(ReturnCode.FAIL);
+        }
     }
 }

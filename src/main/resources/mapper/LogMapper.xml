@@ -13,7 +13,7 @@
 		<result column="method" property="method" jdbcType="VARCHAR"/>
 		<result column="ip" property="ip" jdbcType="VARCHAR"/>
 		<result column="parameter" property="parameter" jdbcType="VARCHAR"/>
-		<result column="result" property="result" jdbcType="VARCHAR"/>
+		<result column="result" property="result" jdbcType="LONGVARCHAR"/>
 	</resultMap>
 	
 	<sql id="tb">log</sql>
