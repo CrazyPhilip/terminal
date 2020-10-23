@@ -10,13 +10,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("Tag")
 @CrossOrigin
 public class TagController {
 
     @Autowired
     private TagService tagService;
 
-    @GetMapping("/GetAllTags")
+    @GetMapping(value = "GetAllTags")
     public ReturnVO getAllTags(){
         List<String> list = tagService.selectAllTags();
         if (list.size() > 0){
@@ -51,8 +52,21 @@ public class TagController {
 
     @GetMapping(value = "InsertTag")
     public ReturnVO insertTag(@RequestParam(value = "tag") String tag){
+        //Tag t = new Tag();
+        //t.setTag(tag);
         int count = tagService.insertTag(tag);
         if (count == 1){
+            return new ReturnVO(ReturnCode.SUCCESS);
+        }
+        else {
+            return new ReturnVO(ReturnCode.FAIL);
+        }
+    }
+
+    @GetMapping(value = "DeleteTag")
+    public ReturnVO deleteTag(@RequestParam(value = "tag") String tag){
+        boolean b = tagService.deleteTag(tag);
+        if (b){
             return new ReturnVO(ReturnCode.SUCCESS);
         }
         else {

@@ -11,13 +11,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("Repository")
 @CrossOrigin
 public class RepositoryController {
 
     @Autowired
     private RepositoryService repositoryService;
 
-    @RequestMapping("/Repositories/{lang}")
+    @RequestMapping("/GetRepositories/{lang}")
     public ReturnVO getRepositories(@PathVariable String lang) {
         System.out.println(lang);
 
@@ -31,7 +32,7 @@ public class RepositoryController {
         }
     }
 
-    @RequestMapping("/Repository/{id}")
+    @RequestMapping("/GetRepoById/{id}")
     public ReturnVO getRepoById(@PathVariable Integer id){
         List<Repository> list = repositoryService.selectRepoById(id);
 
@@ -45,6 +46,7 @@ public class RepositoryController {
 
     @PostMapping(path = "/AddRepository")
     public ReturnVO insertRepository(@RequestBody Repository repository){
+        repository.setId(repositoryService.countRepository() + 1);
         int count = repositoryService.insertRepository(repository);
 
         if(count > 0){

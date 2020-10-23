@@ -15,4 +15,6 @@ public interface TagMapper {
     int checkTag(String tag);
 
     int insertTag(String tag);
+
+    boolean deleteTag(String tag);
 }

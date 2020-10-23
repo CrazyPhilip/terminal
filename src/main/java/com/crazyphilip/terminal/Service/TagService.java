@@ -28,4 +28,8 @@ public class TagService {
     public int insertTag(String tag){
         return tagMapper.insertTag(tag);
     }
+
+    public boolean deleteTag(String tag){
+        return tagMapper.deleteTag(tag);
+    }
 }

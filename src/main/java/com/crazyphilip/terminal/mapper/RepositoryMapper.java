@@ -15,4 +15,6 @@ public interface RepositoryMapper {
     List<Repository> selectRepoById(int id);
 
     int insertRepository(Repository repository);
+
+    int countRepository();
 }

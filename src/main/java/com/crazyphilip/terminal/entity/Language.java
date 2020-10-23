@@ -7,19 +7,9 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Repository {
+public class Language {
 
     private int id;
 
-    private String title;
-
-    private String description;
-
-    private String createtime;
-
-    private String url;
-
     private String lang;
-
-    private String tags;
 }

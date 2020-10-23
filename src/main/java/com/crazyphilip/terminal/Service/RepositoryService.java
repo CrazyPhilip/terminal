@@ -28,4 +28,8 @@ public class RepositoryService {
     public int insertRepository(Repository repository){
         return repositoryMapper.insertRepository(repository);
     }
+
+    public int countRepository(){
+        return repositoryMapper.countRepository();
+    }
 }

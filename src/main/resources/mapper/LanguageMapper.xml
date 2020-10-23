@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.crazyphilip.terminal.mapper.LanguageMapper">
+	<resultMap id="BaseResultMap" type="com.crazyphilip.terminal.entity.Language">
+		<id column="id" property="id" jdbcType="INTEGER"/>
+		<result column="lang" property="lang" jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<sql id="tb">language</sql>
+	
+	<sql id="base_column_list">
+	id,lang
+	</sql>
+	
+	<select id="selectAllLanguages" resultType="java.lang.String">
+		SELECT lang from <include refid="tb"/> order by Id ASC
+	</select>
+	
+	<select id="checkLanguage" parameterType="java.lang.String" resultType="java.lang.Integer">
+		SELECT count(*) from <include refid="tb"/> where lang = #{lang}
+	</select>
+	
+	<select id="selectSimilarLanguages" parameterType="java.lang.String" resultType="java.lang.String">
+		SELECT lang from <include refid="tb"/> where lang like '%${lang}%'
+	</select>
+	
+	<insert id="insertLanguage" parameterType="java.lang.String" useGeneratedKeys="true" keyProperty="id">
+		insert ignore into <include refid="tb"/>(lang) values (#{lang})
+	</insert>
+	
+	<delete id="deleteLanguage" parameterType="java.lang.String">
+		DELETE FROM <include refid="tb"/> WHERE lang = #{lang}
+	</delete>
+
+</mapper>

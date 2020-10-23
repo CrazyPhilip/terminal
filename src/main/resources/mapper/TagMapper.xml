@@ -24,9 +24,12 @@
 		SELECT tag from <include refid="tb"/> where tag like '%${tag}%'
 	</select>
 	
-	<insert id="insertTag" parameterType="Tag" useGeneratedKeys="true" keyProperty="id">
-		insert ignore into <include refid="tb"/>(<include refid="base_column_list"/>)
-		values (#{id}, #{tag})
+	<insert id="insertTag" parameterType="java.lang.String" useGeneratedKeys="true" keyProperty="id">
+		insert ignore into <include refid="tb"/>(tag) values (#{tag})
 	</insert>
+	
+	<delete id="deleteTag" parameterType="java.lang.String">
+        DELETE FROM <include refid="tb"/> WHERE tag = #{tag}
+	</delete>
 
 </mapper>
